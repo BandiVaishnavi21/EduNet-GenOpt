@@ -1,0 +1,1823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduNet-GenOpt | AI-Powered Intelligent Education</title>
+
+    <meta name="description"
+          content="EduNet-GenOpt is an AI-powered educational platform for personalized learning, performance analysis, course recommendations and intelligent study planning.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f7f9fc;
+            color: #172033;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================== */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #e7eaf0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 15px 25px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 22px;
+            font-weight: 800;
+            color: #2457e6;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: #2457e6;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 19px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #111827;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #4b5563;
+            font-size: 15px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #2457e6;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 11px 19px;
+            border-radius: 9px;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-outline {
+            border: 1px solid #d7dce5;
+            background: white;
+            color: #263246;
+        }
+
+        .btn-outline:hover {
+            border-color: #2457e6;
+            color: #2457e6;
+        }
+
+        .btn-primary {
+            background: #2457e6;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1743bd;
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+
+            background:
+                radial-gradient(circle at 80% 20%, rgba(77, 115, 255, 0.14), transparent 30%),
+                radial-gradient(circle at 10% 80%, rgba(55, 180, 160, 0.10), transparent 30%),
+                #f7f9fc;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            min-height: 650px;
+
+            margin: auto;
+            padding: 80px 25px;
+
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            gap: 70px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            padding: 7px 13px;
+            border-radius: 30px;
+
+            background: #eaf0ff;
+            color: #2457e6;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 5vw, 68px);
+            line-height: 1.08;
+            letter-spacing: -2px;
+            color: #111827;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 .highlight {
+            color: #2457e6;
+        }
+
+        .hero-description {
+            max-width: 650px;
+            color: #5d6675;
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 13px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat-row {
+            display: flex;
+            gap: 35px;
+            margin-top: 38px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat strong {
+            display: block;
+            font-size: 24px;
+            color: #172033;
+        }
+
+        .hero-stat span {
+            color: #737d8c;
+            font-size: 13px;
+        }
+
+        /* =========================
+           AI CARD
+        ========================== */
+
+        .ai-card {
+            background: white;
+            border: 1px solid #e2e7ef;
+            border-radius: 25px;
+
+            padding: 25px;
+
+            box-shadow: 0 25px 70px rgba(31, 49, 92, 0.12);
+
+            position: relative;
+        }
+
+        .ai-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding-bottom: 18px;
+            border-bottom: 1px solid #edf0f4;
+        }
+
+        .ai-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+        }
+
+        .ai-icon {
+            width: 40px;
+            height: 40px;
+
+            border-radius: 11px;
+            background: #eaf0ff;
+            color: #2457e6;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-weight: bold;
+        }
+
+        .online {
+            font-size: 12px;
+            color: #1d9b62;
+            font-weight: 700;
+        }
+
+        .ai-message {
+            margin-top: 22px;
+            padding: 16px;
+
+            background: #f5f7fb;
+            border-radius: 14px;
+
+            font-size: 14px;
+            color: #566174;
+        }
+
+        .recommendation {
+            margin-top: 18px;
+        }
+
+        .recommendation h4 {
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+
+        .recommendation-item {
+            padding: 13px;
+
+            border: 1px solid #e7eaf0;
+            border-radius: 12px;
+
+            margin-bottom: 10px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .recommendation-item strong {
+            font-size: 14px;
+        }
+
+        .recommendation-item span {
+            font-size: 12px;
+            color: #2457e6;
+            font-weight: bold;
+        }
+
+        /* =========================
+           COMMON SECTION
+        ========================== */
+
+        section {
+            padding: 90px 25px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section-heading {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 55px;
+        }
+
+        .section-label {
+            color: #2457e6;
+            font-size: 13px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+        }
+
+        .section-heading h2 {
+            font-size: 40px;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            color: #111827;
+        }
+
+        .section-heading p {
+            color: #697386;
+            font-size: 16px;
+        }
+
+        /* =========================
+           FEATURES
+        ========================== */
+
+        .features {
+            background: white;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .feature-card {
+            padding: 28px;
+
+            background: #ffffff;
+            border: 1px solid #e5e9f0;
+            border-radius: 18px;
+
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            border-color: #b9c9f7;
+            box-shadow: 0 18px 40px rgba(28, 47, 90, 0.08);
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+
+            border-radius: 13px;
+
+            background: #edf2ff;
+            color: #2457e6;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 20px;
+            font-weight: bold;
+
+            margin-bottom: 18px;
+        }
+
+        .feature-card h3 {
+            font-size: 19px;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: #687386;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           HOW IT WORKS
+        ========================== */
+
+        .workflow {
+            background: #f7f9fc;
+        }
+
+        .workflow-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .workflow-card {
+            text-align: center;
+            padding: 30px 20px;
+            position: relative;
+        }
+
+        .workflow-number {
+            width: 55px;
+            height: 55px;
+
+            margin: 0 auto 18px;
+
+            border-radius: 50%;
+            background: #2457e6;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .workflow-card h3 {
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+
+        .workflow-card p {
+            color: #697386;
+            font-size: 14px;
+        }
+
+        /* =========================
+           AI BOTS
+        ========================== */
+
+        .bots {
+            background: white;
+        }
+
+        .bot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .bot-card {
+            border: 1px solid #e3e7ef;
+            border-radius: 20px;
+            padding: 27px;
+
+            display: flex;
+            gap: 18px;
+
+            transition: 0.3s;
+        }
+
+        .bot-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 40px rgba(30, 45, 80, 0.08);
+        }
+
+        .bot-icon {
+            flex-shrink: 0;
+
+            width: 52px;
+            height: 52px;
+
+            border-radius: 14px;
+            background: #edf2ff;
+            color: #2457e6;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .bot-card h3 {
+            margin-bottom: 7px;
+        }
+
+        .bot-card p {
+            color: #697386;
+            font-size: 14px;
+        }
+
+        /* =========================
+           RAG SECTION
+        ========================== */
+
+        .rag {
+            background: #111827;
+            color: white;
+        }
+
+        .rag-container {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .rag .section-label {
+            color: #8faaff;
+        }
+
+        .rag h2 {
+            font-size: 40px;
+            line-height: 1.2;
+            margin-bottom: 18px;
+        }
+
+        .rag-description {
+            color: #b8c0ce;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .rag-flow {
+            background: #1a2333;
+            border: 1px solid #2c374a;
+            border-radius: 20px;
+            padding: 28px;
+        }
+
+        .rag-step {
+            padding: 17px;
+
+            border: 1px solid #303b4f;
+            border-radius: 12px;
+
+            margin-bottom: 12px;
+
+            background: #202a3b;
+        }
+
+        .rag-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .rag-step strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .rag-step span {
+            color: #aeb8c8;
+            font-size: 13px;
+        }
+
+        /* =========================
+           DASHBOARD PREVIEW
+        ========================== */
+
+        .dashboard {
+            background: #f7f9fc;
+        }
+
+        .dashboard-preview {
+            background: white;
+            border: 1px solid #e2e7ef;
+            border-radius: 22px;
+            padding: 24px;
+
+            box-shadow: 0 20px 50px rgba(30, 45, 80, 0.07);
+        }
+
+        .dashboard-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 22px;
+        }
+
+        .dashboard-top h3 {
+            font-size: 20px;
+        }
+
+        .dashboard-status {
+            padding: 7px 12px;
+            border-radius: 20px;
+
+            background: #eaf8f1;
+            color: #178957;
+
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+        }
+
+        .dash-card {
+            padding: 20px;
+
+            border: 1px solid #e7eaf0;
+            border-radius: 14px;
+        }
+
+        .dash-card span {
+            display: block;
+            color: #798293;
+            font-size: 12px;
+            margin-bottom: 7px;
+        }
+
+        .dash-card strong {
+            font-size: 22px;
+        }
+
+        /* =========================
+           SECURITY
+        ========================== */
+
+        .security {
+            background: white;
+        }
+
+        .security-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .security-card {
+            padding: 25px;
+            background: #f8faff;
+            border-radius: 16px;
+            border: 1px solid #e5eaf5;
+        }
+
+        .security-card h3 {
+            margin-bottom: 8px;
+            font-size: 17px;
+        }
+
+        .security-card p {
+            color: #6b7485;
+            font-size: 14px;
+        }
+
+        /* =========================
+           CTA
+        ========================== */
+
+        .cta {
+            padding: 90px 25px;
+            background: #2457e6;
+            color: white;
+            text-align: center;
+        }
+
+        .cta-container {
+            max-width: 750px;
+            margin: auto;
+        }
+
+        .cta h2 {
+            font-size: 42px;
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            color: #dbe4ff;
+            margin-bottom: 28px;
+        }
+
+        .cta .btn {
+            background: white;
+            color: #2457e6;
+        }
+
+        .cta .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            background: #0d1421;
+            color: #aeb7c7;
+            padding: 55px 25px 25px;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 45px;
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 16px;
+        }
+
+        .footer-brand .logo span {
+            color: white;
+        }
+
+        .footer-brand p {
+            max-width: 350px;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .footer-column h4 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .footer-column a {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 9px;
+            transition: 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 45px auto 0;
+
+            padding-top: 20px;
+
+            border-top: 1px solid #252e3c;
+
+            text-align: center;
+            font-size: 13px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 1000px) {
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons,
+            .hero-stat-row {
+                justify-content: center;
+            }
+
+            .feature-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .workflow-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .dashboard-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .rag-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 750px) {
+
+            .nav-links,
+            .nav-buttons {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 43px;
+            }
+
+            .feature-grid,
+            .bot-grid,
+            .security-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .workflow-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-heading h2,
+            .rag h2,
+            .cta h2 {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .nav-container {
+                padding: 12px 16px;
+            }
+
+            section {
+                padding: 65px 18px;
+            }
+
+            .hero-container {
+                padding: 65px 18px;
+            }
+
+            .hero h1 {
+                font-size: 37px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ai-card {
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- =====================================================
+     NAVBAR
+====================================================== -->
+
+<header class="navbar">
+
+    <div class="nav-container">
+
+        <a href="/" class="logo">
+            <div class="logo-icon">E</div>
+            Edu<span>Net</span>-GenOpt
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#bots">AI Bots</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#rag">RAG & AI</a></li>
+        </ul>
+
+        <div class="nav-buttons">
+            <a href="{% url 'login' %}" class="btn btn-outline">Login</a>
+            <a href="{% url 'register' %}" class="btn btn-primary">Get Started</a>
+        </div>
+
+        <div class="mobile-menu">
+            ☰
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     HERO SECTION
+====================================================== -->
+
+<section class="hero">
+
+    <div class="hero-container">
+
+        <div class="hero-content">
+
+            <div class="hero-badge">
+                ✦ Generative AI Powered Education
+            </div>
+
+            <h1>
+                Learn Smarter.
+                <span class="highlight">Grow Faster.</span>
+            </h1>
+
+            <p class="hero-description">
+                EduNet-GenOpt is an intelligent educational platform
+                that uses Generative AI to understand student needs,
+                recommend learning resources, analyze performance,
+                and create personalized study plans.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="{% url 'register' %}" class="btn btn-primary">
+                    Start Learning →
+                </a>
+
+                <a href="#features" class="btn btn-outline">
+                    Explore Features
+                </a>
+
+            </div>
+
+            <div class="hero-stat-row">
+
+                <div class="hero-stat">
+                    <strong>AI</strong>
+                    <span>Powered Learning</span>
+                </div>
+
+                <div class="hero-stat">
+                    <strong>4+</strong>
+                    <span>Intelligent Bots</span>
+                </div>
+
+                <div class="hero-stat">
+                    <strong>24/7</strong>
+                    <span>Learning Support</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- AI PREVIEW -->
+
+        <div class="ai-card">
+
+            <div class="ai-card-header">
+
+                <div class="ai-title">
+                    <div class="ai-icon">AI</div>
+
+                    <div>
+                        <div>EduNet AI Assistant</div>
+                        <small style="color:#7a8494;">
+                            Personalized Learning
+                        </small>
+                    </div>
+                </div>
+
+                <div class="online">
+                    ● Online
+                </div>
+
+            </div>
+
+
+            <div class="ai-message">
+
+                <strong>Hello, Student!</strong>
+
+                <br><br>
+
+                Based on your interests and recent
+                academic performance, here are some
+                learning recommendations for you.
+
+            </div>
+
+
+            <div class="recommendation">
+
+                <h4>Recommended for You</h4>
+
+                <div class="recommendation-item">
+
+                    <div>
+                        <strong>Advanced Java</strong>
+                        <br>
+                        <small style="color:#7a8494;">
+                            Backend Development
+                        </small>
+                    </div>
+
+                    <span>Recommended</span>
+
+                </div>
+
+
+                <div class="recommendation-item">
+
+                    <div>
+                        <strong>Spring Boot</strong>
+                        <br>
+                        <small style="color:#7a8494;">
+                            Java Full Stack
+                        </small>
+                    </div>
+
+                    <span>Recommended</span>
+
+                </div>
+
+
+                <div class="recommendation-item">
+
+                    <div>
+                        <strong>Database Management</strong>
+                        <br>
+                        <small style="color:#7a8494;">
+                            Skill Improvement
+                        </small>
+                    </div>
+
+                    <span>Focus Area</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FEATURES
+====================================================== -->
+
+<section class="features" id="features">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                Platform Features
+            </div>
+
+            <h2>
+                One Platform for Intelligent Learning
+            </h2>
+
+            <p>
+                EduNet-GenOpt combines educational management
+                with Generative AI to provide personalized,
+                automated and data-driven learning support.
+            </p>
+
+        </div>
+
+
+        <div class="feature-grid">
+
+            <div class="feature-card">
+
+                <div class="feature-icon">AI</div>
+
+                <h3>AI Course Recommendation</h3>
+
+                <p>
+                    Receive personalized course recommendations
+                    based on your interests and previous academic
+                    performance.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">P</div>
+
+                <h3>Performance Analysis</h3>
+
+                <p>
+                    Analyze academic performance, identify
+                    strengths and weaknesses, and receive
+                    an actionable learning plan.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">Q</div>
+
+                <h3>Question Paper Analysis</h3>
+
+                <p>
+                    Upload previous examination papers and
+                    receive a focused seven-day study plan
+                    based on the available material.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">E</div>
+
+                <h3>Smart Event Updates</h3>
+
+                <p>
+                    Discover academic events and opportunities
+                    that match your interests.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">N</div>
+
+                <h3>Network Monitoring</h3>
+
+                <p>
+                    Monitor system and network logs, detect
+                    anomalies and receive performance
+                    optimization suggestions.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">A</div>
+
+                <h3>Admin Dashboard</h3>
+
+                <p>
+                    Administrators can manage users, account
+                    activation and important system activities
+                    from a centralized dashboard.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     HOW IT WORKS
+====================================================== -->
+
+<section class="workflow" id="how-it-works">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                How It Works
+            </div>
+
+            <h2>
+                From Student Data to Intelligent Support
+            </h2>
+
+            <p>
+                The platform uses student information and
+                relevant educational data to provide
+                personalized learning assistance.
+            </p>
+
+        </div>
+
+
+        <div class="workflow-grid">
+
+            <div class="workflow-card">
+
+                <div class="workflow-number">01</div>
+
+                <h3>Register</h3>
+
+                <p>
+                    Create an account and provide your
+                    basic information and interests.
+                </p>
+
+            </div>
+
+
+            <div class="workflow-card">
+
+                <div class="workflow-number">02</div>
+
+                <h3>Analyze</h3>
+
+                <p>
+                    The system processes student information,
+                    performance and relevant educational data.
+                </p>
+
+            </div>
+
+
+            <div class="workflow-card">
+
+                <div class="workflow-number">03</div>
+
+                <h3>Generate</h3>
+
+                <p>
+                    AI-powered components generate
+                    recommendations and learning plans.
+                </p>
+
+            </div>
+
+
+            <div class="workflow-card">
+
+                <div class="workflow-number">04</div>
+
+                <h3>Improve</h3>
+
+                <p>
+                    Students use the personalized insights
+                    to improve their learning process.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     AI BOTS
+====================================================== -->
+
+<section class="bots" id="bots">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                Intelligent Agents
+            </div>
+
+            <h2>
+                Specialized AI Bots
+            </h2>
+
+            <p>
+                Different intelligent components are designed
+                to handle different educational and technical tasks.
+            </p>
+
+        </div>
+
+
+        <div class="bot-grid">
+
+            <div class="bot-card">
+
+                <div class="bot-icon">01</div>
+
+                <div>
+
+                    <h3>Course Recommendation Bot</h3>
+
+                    <p>
+                        Recommends approximately 4–6 suitable
+                        courses based on student interests
+                        and previous performance.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="bot-card">
+
+                <div class="bot-icon">02</div>
+
+                <div>
+
+                    <h3>Event Updates Bot</h3>
+
+                    <p>
+                        Processes event information and
+                        identifies events relevant to
+                        student interests.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="bot-card">
+
+                <div class="bot-icon">03</div>
+
+                <div>
+
+                    <h3>Performance Analyzer Bot</h3>
+
+                    <p>
+                        Analyzes grades, identifies strengths
+                        and weaknesses, and generates an
+                        actionable learning plan.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="bot-card">
+
+                <div class="bot-icon">04</div>
+
+                <div>
+
+                    <h3>Question Paper Bot</h3>
+
+                    <p>
+                        Reads uploaded examination papers
+                        in PDF or image format and generates
+                        a focused seven-day study plan.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="bot-card">
+
+                <div class="bot-icon">05</div>
+
+                <div>
+
+                    <h3>Network Monitoring Bot</h3>
+
+                    <p>
+                        Analyzes system or network logs,
+                        detects anomalies and suggests
+                        performance improvements.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="bot-card">
+
+                <div class="bot-icon">06</div>
+
+                <div>
+
+                    <h3>AI Learning Assistant</h3>
+
+                    <p>
+                        Uses Generative AI capabilities to
+                        provide context-aware educational
+                        responses and intelligent support.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     RAG SECTION
+====================================================== -->
+
+<section class="rag" id="rag">
+
+    <div class="rag-container">
+
+        <div>
+
+            <div class="section-label">
+                Context-Aware AI
+            </div>
+
+            <h2>
+                Intelligent Responses with Relevant Context
+            </h2>
+
+            <p class="rag-description">
+                EduNet-GenOpt is designed around context-aware
+                Generative AI. Relevant educational information
+                can be retrieved and supplied as context before
+                generating an AI response.
+            </p>
+
+            <a href="{% url 'register' %}" class="btn btn-primary">
+                Explore EduNet-GenOpt
+            </a>
+
+        </div>
+
+
+        <div class="rag-flow">
+
+            <div class="rag-step">
+
+                <strong>01 · User Input</strong>
+
+                <span>
+                    Student provides a question, interest,
+                    performance information or document.
+                </span>
+
+            </div>
+
+
+            <div class="rag-step">
+
+                <strong>02 · Retrieve Relevant Data</strong>
+
+                <span>
+                    Relevant educational information is
+                    identified from available data.
+                </span>
+
+            </div>
+
+
+            <div class="rag-step">
+
+                <strong>03 · Add Context</strong>
+
+                <span>
+                    The retrieved information provides
+                    context for the Generative AI model.
+                </span>
+
+            </div>
+
+
+            <div class="rag-step">
+
+                <strong>04 · Generate Response</strong>
+
+                <span>
+                    AI generates a context-aware educational
+                    response or learning recommendation.
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     DASHBOARD PREVIEW
+====================================================== -->
+
+<section class="dashboard">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                Student Dashboard
+            </div>
+
+            <h2>
+                Understand Your Learning Progress
+            </h2>
+
+            <p>
+                Bring important academic information and
+                intelligent insights together in one place.
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-preview">
+
+            <div class="dashboard-top">
+
+                <div>
+                    <h3>Learning Overview</h3>
+
+                    <small style="color:#7a8494;">
+                        Personalized student insights
+                    </small>
+                </div>
+
+                <div class="dashboard-status">
+                    ● Active
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-grid">
+
+                <div class="dash-card">
+
+                    <span>Learning Status</span>
+
+                    <strong>Active</strong>
+
+                </div>
+
+
+                <div class="dash-card">
+
+                    <span>AI Recommendations</span>
+
+                    <strong>4–6</strong>
+
+                </div>
+
+
+                <div class="dash-card">
+
+                    <span>Study Plan</span>
+
+                    <strong>7 Days</strong>
+
+                </div>
+
+
+                <div class="dash-card">
+
+                    <span>AI Support</span>
+
+                    <strong>Enabled</strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SECURITY
+====================================================== -->
+
+<section class="security">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                Security & Management
+            </div>
+
+            <h2>
+                Designed for Secure Educational Management
+            </h2>
+
+            <p>
+                The platform includes authentication and
+                administrative controls to support secure
+                educational application management.
+            </p>
+
+        </div>
+
+
+        <div class="security-grid">
+
+            <div class="security-card">
+
+                <h3>🔐 OTP Password Recovery</h3>
+
+                <p>
+                    Users can securely recover their password
+                    using an OTP sent to their registered email.
+                </p>
+
+            </div>
+
+
+            <div class="security-card">
+
+                <h3>✓ Admin Approval</h3>
+
+                <p>
+                    Administrators can control account
+                    activation and user access.
+                </p>
+
+            </div>
+
+
+            <div class="security-card">
+
+                <h3>📁 File Validation</h3>
+
+                <p>
+                    Uploaded files are validated so that
+                    unsupported formats can be rejected.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CTA
+====================================================== -->
+
+<section class="cta">
+
+    <div class="cta-container">
+
+        <h2>
+            Make Learning More Intelligent
+        </h2>
+
+        <p>
+            Start using an educational platform designed
+            around personalization, automation and
+            Generative AI.
+        </p>
+
+        <a href="{% url 'register' %}" class="btn">
+            Create Your Account →
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+====================================================== -->
+
+<footer>
+
+    <div class="footer-grid">
+
+        <div class="footer-brand">
+
+            <a href="/" class="logo">
+
+                <div class="logo-icon">E</div>
+
+                Edu<span>Net</span>-GenOpt
+
+            </a>
+
+            <p>
+                An intelligent educational platform combining
+                Generative AI, personalized learning,
+                performance analysis and educational
+                automation.
+            </p>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>Platform</h4>
+
+            <a href="#features">Features</a>
+            <a href="#bots">AI Bots</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#rag">RAG & AI</a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>Account</h4>
+
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'register' %}">Register</a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>Technology</h4>
+
+            <a href="#rag">Generative AI</a>
+            <a href="#bots">AI Agents</a>
+            <a href="#features">Django</a>
+            <a href="#features">Intelligent Learning</a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        © 2026 EduNet-GenOpt. Intelligent Education Platform.
+
+    </div>
+
+</footer>
+
+
+</body>
+</html>
